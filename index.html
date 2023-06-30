@@ -34,15 +34,14 @@
         margin-top: 20px;
       }
 
-      #send-button {
+      #send-link {
         margin-top: 20px;
         padding: 10px 20px;
         background-color: white;
         color: black;
-        border: none;
+        text-decoration: none;
         border-radius: 4px;
         font-size: 18px;
-        cursor: pointer;
       }
 
       #snowfall-container {
@@ -69,7 +68,7 @@
         alt="Feliz Cumpleaños"
       />
       <div id="message">Feliz Cumpleaños al Cumpleañero</div>
-      <button id="send-button">Enviar mensaje</button>
+      <a id="send-link" href="#">Enviar mensaje</a>
     </div>
 
     <div id="snowfall-container"></div>
@@ -79,11 +78,12 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-snowfall/dist/snowfall.jquery.min.js"></script>
     <script>
-      var button = document.getElementById("send-button");
-      button.addEventListener("click", handleClick);
-      button.addEventListener("touchstart", handleTouch);
+      var link = document.getElementById("send-link");
+      link.addEventListener("click", handleClick);
+      link.addEventListener("touchstart", handleTouch);
 
-      function handleClick() {
+      function handleClick(event) {
+        event.preventDefault();
         var message = "Que cumplas muchos años más";
         alert(message);
         startSnowfall();
@@ -92,7 +92,10 @@
 
       function handleTouch(event) {
         event.preventDefault();
-        playMusic();
+        var message = "Que cumplas muchos años más";
+        alert(message);
+        startSnowfall();
+        showGif();
       }
 
       function startSnowfall() {
