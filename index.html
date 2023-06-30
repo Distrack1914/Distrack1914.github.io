@@ -1,65 +1,112 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Novia</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noticia+Text&family=Raleway&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/style.css">
-    <script>
-        function accionParaCuandoEllaDigaQueSi(){
-            alert('!!ahora ya somos novios!!');
-        }
-        function mueveElBoton(){
-            width = window.innerWidth;
-            height = window.innerHeight;
+  <head>
+    <title>Feliz Cumpleaños</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    />
+    <style>
+      body {
+        background-color: black;
+        color: white;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
 
-            newWidth = (Math.random() * width);
-            newHeight = (Math.random() * height);
+      #content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
 
-            document.getElementById('btnNo').style.position = "absolute";
-            document.getElementById('btnNo').style.left = newWidth + "px";
-            document.getElementById('btnNo').style.top = newHeight + "px";
-            
+      #birthday-image {
+        max-width: 50%;
+      }
 
-        }
-    </script>
-    <script>
-        window.onload = function() {
-          var audio = document.getElementsByTagName("audio")[0];
-          audio.play();
-        }
-      </script>
-</head>
-<body>
+      #message {
+        font-size: 24px;
+        margin-top: 20px;
+      }
 
-    <div class="container">
-        <h1>¿Quieres ser mi novia?</h1>
-        <div class="cont">
-            <div class="tama">
-             <img src="./img/chuec1.png" alt="">
-            </div>
-            <div class="tama">
-                <img src="./img/chuec.png" alt="">
-            </div>
-            
-        </div>
-        <div class="forma">
-            <p>Desde mucho tiempo he tratado de decirte y no había encontrado la forma de decirte, hasta hoy.</p>
-        </div>
-        <div class="two">
-            <input  class="btn1" type="button" onclick="accionParaCuandoEllaDigaQueSi()" id="btnSi" value="Si" />
-            <input class="btn1" type="button" id="btnNo" onmouseover="mueveElBoton()" value="No" />
-        </div>
-        <div class="cont2">
-            <div class="audio">
-                <center><audio autoplay src="./audio/Careless.mp3" controls></audio></center>
-            </div>
-        </div>
+      #send-button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: white;
+        color: black;
+        border: none;
+        border-radius: 4px;
+        font-size: 18px;
+        cursor: pointer;
+      }
+
+      #snowfall-container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+      }
+
+      #gif-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="content" class="container">
+      <img
+        id="birthday-image"
+        src="./image-removebg-preview.png"
+        alt="Feliz Cumpleaños"
+      />
+      <div id="message">Feliz Cumpleaños al Cumpleañero</div>
+      <button id="send-button">Enviar mensaje</button>
     </div>
-    
-</body>
+
+    <div id="snowfall-container"></div>
+
+    <audio id="music" src="./tai.mp3"></audio>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-snowfall/dist/snowfall.jquery.min.js"></script>
+    <script>
+      var button = document.getElementById("send-button");
+      button.addEventListener("click", function () {
+        var message = "Que cumplas muchos años más";
+        alert(message);
+        startSnowfall();
+        showGif();
+        playMusic();
+      });
+
+      function startSnowfall() {
+        $("body").append('<div id="snowfall-container"></div>');
+        $("body").snowfall({ flakeCount: 100, maxSpeed: 5 });
+      }
+
+      function showGif() {
+        var gifContainer = document.createElement("div");
+        gifContainer.id = "gif-container";
+        var gifImage = document.createElement("img");
+        gifImage.src = "./ste.gif"; // Reemplaza './ruta/al/gif.gif' por la ruta correcta de tu gif
+        gifContainer.appendChild(gifImage);
+        document.body.appendChild(gifContainer);
+      }
+
+      function playMusic() {
+        var music = document.getElementById("music");
+        music.play();
+      }
+    </script>
+  </body>
 </html>
+``
