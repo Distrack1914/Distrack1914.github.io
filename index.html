@@ -68,7 +68,7 @@
         src="./image-removebg-preview.png"
         alt="Feliz Cumpleaños"
       />
-      <div id="message">Feliz CUMpleaños al CUMpleañero</div>
+      <div id="message">Feliz Cumpleaños al Cumpleañero</div>
       <button id="send-button">Enviar mensaje</button>
     </div>
 
@@ -80,13 +80,20 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery-snowfall/dist/snowfall.jquery.min.js"></script>
     <script>
       var button = document.getElementById("send-button");
-      button.addEventListener("click", function () {
+      button.addEventListener("click", handleClick);
+      button.addEventListener("touchstart", handleTouch);
+
+      function handleClick() {
         var message = "Que cumplas muchos años más";
         alert(message);
         startSnowfall();
         showGif();
+      }
+
+      function handleTouch(event) {
+        event.preventDefault();
         playMusic();
-      });
+      }
 
       function startSnowfall() {
         $("body").append('<div id="snowfall-container"></div>');
@@ -109,4 +116,3 @@
     </script>
   </body>
 </html>
-``
